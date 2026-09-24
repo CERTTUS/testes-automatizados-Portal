@@ -1,0 +1,7 @@
+{
+  "schema": "qa-pre-cr-catalogo",
+  "versao": 1,
+  "produto": "portal",
+  "playwrightProjects": ["chromium"],
+  "modulos": []
+}

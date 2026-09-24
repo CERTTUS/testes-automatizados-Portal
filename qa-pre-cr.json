@@ -1,0 +1,22 @@
+{
+  "schema": "qa-pre-cr-manifest",
+  "versao": 1,
+  "produto": "portal",
+  "reposProduto": ["portalcliente-web", "portalcliente-api"],
+  "stack": "playwright",
+  "plataforma": "web",
+  "camadas": {
+    "jest": true,
+    "api": true,
+    "smoke": true
+  },
+  "comandos": {
+    "resolver": "npm run pre-cr:resolver --",
+    "preCr": "npm run test:pre-cr --",
+    "bootstrap": "npm run pre-cr:bootstrap --",
+    "empacotar": "npm run pre-cr:empacotar --",
+    "corpoPr": "npm run pre-cr:corpo-pr --"
+  },
+  "docsBase": "docs/tests",
+  "evidenciasBase": "evidencias-pr"
+}
