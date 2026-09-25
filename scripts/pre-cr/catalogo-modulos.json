@@ -3,5 +3,17 @@
   "versao": 1,
   "produto": "portal",
   "playwrightProjects": ["chromium"],
-  "modulos": []
+  "modulos": [
+    {
+      "slug": "portal-login-telefone",
+      "label": "Login Portal — máscara BR e tronco 0 (IN-901 / IN-907)",
+      "docs": "docs/tests/portal-login-telefone",
+      "parentKey": "IN-901",
+      "devKey": "IN-907",
+      "testeKey": "IN-911",
+      "specs": [
+        "tests/e2e/specs/portal-login-telefone/acesso-telefone-mascara.spec.ts"
+      ]
+    }
+  ]
 }
