@@ -26,6 +26,28 @@ test.describe('Portal — login telefone máscara IN-907', () => {
       await oAcesso.expectRedirectOs(C_TOKEN_OK);
    });
 
+   test('CT-E2E-03 — Backspace no DDD permite corrigir prefixo', async ({page}) => {
+      const oAcesso = new AcessoPortalPage(page);
+      await oAcesso.abrirLanding(C_TOKEN_OK);
+
+      const cValorInicial = '(11) 999999999';
+      await oAcesso.preencherTelefone('11999999999');
+      await oAcesso.expectValorTelefone(cValorInicial);
+
+      // Cursor após o DDD, sobre o fechamento ")" — CT-1 IN-913
+      await oAcesso.posicionarCursorTelefone(4);
+      await oAcesso.pressionarBackspaceTelefone();
+
+      const cDepoisBackspace = await oAcesso.campoTelefone().inputValue();
+      expect(cDepoisBackspace).not.toBe(cValorInicial);
+      expect(cDepoisBackspace.replace(/\D/g, '').length).toBe(10);
+
+      // Novo DDD 19 — campo continua editável
+      await oAcesso.posicionarCursorTelefone(2);
+      await oAcesso.campoTelefone().press('9');
+      await oAcesso.expectValorTelefone('(19) 999999999');
+   });
+
    test('CT-E2E-02 — Login sem tronco 0 redireciona', async ({page}) => {
       const oAcesso = new AcessoPortalPage(page);
       await oAcesso.abrirLanding(C_TOKEN_OK);

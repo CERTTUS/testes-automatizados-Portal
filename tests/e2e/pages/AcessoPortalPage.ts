@@ -12,8 +12,28 @@ export class AcessoPortalPage {
       );
    }
 
+   campoTelefone() {
+      return this.page.locator('input[name="telefone"]');
+   }
+
    async preencherTelefone(cDigitos: string): Promise<void> {
-      await this.page.locator('input[name="telefone"]').fill(cDigitos);
+      await this.campoTelefone().fill(cDigitos);
+   }
+
+   async expectValorTelefone(cValor: string): Promise<void> {
+      await expect(this.campoTelefone()).toHaveValue(cValor);
+   }
+
+   async posicionarCursorTelefone(nPosicao: number): Promise<void> {
+      const oCampo = this.campoTelefone();
+      await oCampo.focus();
+      await oCampo.evaluate((el, nPos) => {
+         (el as HTMLInputElement).setSelectionRange(nPos, nPos);
+      }, nPosicao);
+   }
+
+   async pressionarBackspaceTelefone(): Promise<void> {
+      await this.campoTelefone().press('Backspace');
    }
 
    async clicarAcessar(): Promise<void> {
