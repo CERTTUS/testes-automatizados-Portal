@@ -12,7 +12,8 @@
       "docs": "docs/tests/modulo-talk-2638",
       "specs": [
         "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
-        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts"
+        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts"
       ],
       "geradoNaDev": true,
       "match": [
