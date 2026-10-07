@@ -2,6 +2,23 @@
   "schema": "qa-pre-cr-catalogo",
   "versao": 1,
   "produto": "portal",
-  "playwrightProjects": ["chromium"],
-  "modulos": []
+  "playwrightProjects": [
+    "chromium"
+  ],
+  "modulos": [
+    {
+      "slug": "modulo-talk-2638",
+      "label": "Landing portal — tema e contrato",
+      "docs": "docs/tests/modulo-talk-2638",
+      "specs": [
+        "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2638",
+        "TALK-2638"
+      ]
+    }
+  ]
 }
