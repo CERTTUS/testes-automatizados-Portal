@@ -75,5 +75,8 @@ test.describe('Smoke — conteúdo D4_v2 autenticado (TALK-2670)', () => {
       page.getByRole('link', {name: 'Criado por CERTTUS — abrir site da Certtus em nova aba'}),
     ).toBeVisible();
     await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-05', 3, 'rodape-assinatura');
+
+    await expect(page.getByTestId('painel-evolucao-os')).toBeVisible();
+    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-05', 4, 'painel-evolucao-com-timeline');
   });
 });
