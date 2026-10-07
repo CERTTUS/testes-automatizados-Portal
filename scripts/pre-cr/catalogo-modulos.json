@@ -13,12 +13,19 @@
       "specs": [
         "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
         "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts",
-        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts"
+        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-05-d4-conteudo.spec.ts"
       ],
       "geradoNaDev": true,
       "match": [
         "modulo-talk-2638",
-        "TALK-2638"
+        "TALK-2638",
+        "TALK-2670",
+        "TALK-2640",
+        "BlocoSaudacaoOs",
+        "BlocoCondicoes",
+        "RodapeOficinaPortal",
+        "ConteudoDetalheOsAutenticado"
       ]
     }
   ]
