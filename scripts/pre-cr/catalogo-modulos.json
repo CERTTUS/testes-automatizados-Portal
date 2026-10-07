@@ -2,6 +2,47 @@
   "schema": "qa-pre-cr-catalogo",
   "versao": 1,
   "produto": "portal",
-  "playwrightProjects": ["chromium"],
-  "modulos": []
+  "playwrightProjects": [
+    "chromium"
+  ],
+  "modulos": [
+    {
+      "slug": "modulo-talk-2638",
+      "label": "Landing portal — tema e contrato",
+      "docs": "docs/tests/modulo-talk-2638",
+      "specs": [
+        "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-05-d4-conteudo.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-06-sem-timeline.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2638",
+        "TALK-2638",
+        "TALK-2670",
+        "TALK-2640",
+        "BlocoSaudacaoOs",
+        "BlocoCondicoes",
+        "RodapeOficinaPortal",
+        "ConteudoDetalheOsAutenticado",
+        "PainelDetalheOs",
+        "RelatorioServico",
+        "autenticado-d4",
+        "TALK-2671"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2640",
+      "label": "Gerado na Dev (modulo-talk-2640)",
+      "docs": "docs/tests/modulo-talk-2640",
+      "specs": [],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2640",
+        "TALK-2640"
+      ]
+    }
+  ]
 }
