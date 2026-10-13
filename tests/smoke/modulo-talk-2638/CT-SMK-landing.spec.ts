@@ -5,6 +5,9 @@ import {evidenciarPassoSmokePreCr} from '../../e2e/helpers/pre-cr/evidenciarSmok
 test.describe('Smoke — landing portal (TALK-2666)', () => {
    test('CT-SMK-01 — Tela de acesso com marca', async ({page}, testInfo) => {
       await page.goto(`/${C_TOKEN_OK}`);
+      const oCabecalho = page.getByTestId('acesso-cabecalho-marca');
+      await expect(oCabecalho).toBeVisible();
+      await expect(oCabecalho).toHaveClass(/acesso-marca--login/);
       await expect(page.locator('.acesso-marca__nome')).toHaveText('Oficina E2E');
       await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-01', 1, 'landing-marca');
       await expect(page.getByRole('button', {name: 'Acessar'})).toBeVisible();

@@ -37,7 +37,7 @@ const O_DETALHE_MINIMO = {
 };
 
 test.describe('Smoke — shell autenticado (TALK-2669)', () => {
-  test('CT-SMK-04 — Shell autenticado com menu', async ({page, context}, testInfo) => {
+  test('CT-SMK-01 — Shell autenticado: topo, Boleto e Sair', async ({page, context}, testInfo) => {
     await context.addCookies([
       {
         name: 'portal_sessao',
@@ -57,7 +57,7 @@ test.describe('Smoke — shell autenticado (TALK-2669)', () => {
 
     await page.goto(`/os/${encodeURIComponent(C_TOKEN_OK)}`);
     await expect(page.getByTestId('layout-portal-autenticado')).toBeVisible();
-    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-04', 1, 'shell-autenticado');
+    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-01', 1, 'shell-autenticado');
 
     const oMenu = page.getByTestId('menu-topo-portal');
     await expect(oMenu).toBeVisible();
@@ -65,6 +65,6 @@ test.describe('Smoke — shell autenticado (TALK-2669)', () => {
     await expect(page.getByTestId('nav-ordem-servico')).toBeVisible();
     await expect(page.getByTestId('nav-boleto')).toBeVisible();
     await expect(page.getByTestId('btn-sair-portal')).toBeVisible();
-    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-04', 2, 'menu-os-boleto-sair');
+    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-01', 2, 'menu-os-boleto-sair');
   });
 });
