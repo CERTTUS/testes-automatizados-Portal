@@ -6,11 +6,15 @@ import {
 } from '../../helpers/portal/landingTemaHelpers';
 
 test.describe('E2E — landing tema portal (TALK-2666 / TALK-2748)', () => {
-   test('CT-E2E-01 — Landing sem tokens derivados', async ({page}) => {
+   test('CT-E2E-01 — Landing sem tema custom no MS (defaults FR-008 no BFF)', async ({
+      page,
+   }) => {
       await landingSemTokensDerivadosAguardar(page);
       await expect(page.getByRole('button', {name: 'Acessar'})).toBeVisible();
       await expect(page.locator('input[name="telefone"]')).toBeVisible();
-      await expect(page.getByTestId('tema-portal-aplicar')).toHaveCount(0);
+      const oTema = page.getByTestId('tema-portal-aplicar');
+      await expect(oTema).toBeVisible();
+      await expect(oTema).toHaveCSS('--theme-action-primary', '#2563eb');
    });
 
    test('CT-E2E-02 — Tema no shell autenticado', async ({page}) => {

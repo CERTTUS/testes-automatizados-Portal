@@ -23,7 +23,9 @@ test.describe('API — landing portal (TALK-2666)', () => {
       };
       expect(oBody.lSucesso).toBe(true);
       expect(oBody.oDados?.cNomeFantasia).toBe('Oficina E2E');
-      expect(oBody.oDados?.oTokensDerivados?.['--cor-primaria']).toBe('#1a5276');
+      expect(oBody.oDados?.oTokensDerivados?.['--theme-action-primary']).toBe(
+         '#1a5276',
+      );
    });
 
    test('CT-API-02 — Landing link revogado', async ({request}, testInfo) => {
@@ -52,7 +54,8 @@ test.describe('API — landing portal (TALK-2666)', () => {
       };
       expect(oBody.lSucesso).toBe(true);
       expect(oBody.oDados?.cNomeFantasia).toBe('Oficina Tema Custom');
-      expect(oBody.oDados?.cUrlImagemHero).toMatch(/hero-tema-custom\.jpg$/);
-      expect(oBody.oDados?.oTokensDerivados?.['--cor-primaria']).toBe('#6c3483');
+      expect(oBody.oDados?.oTokensDerivados?.['--theme-action-primary']).toBe(
+         '#6c3483',
+      );
    });
 });

@@ -21,7 +21,7 @@ test.describe('Smoke — landing portal (TALK-2666)', () => {
       const oTema = page.locator('.tema-portal-aplicar');
       await expect(oTema).toBeVisible();
       await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-02', 1, 'wrapper-tema');
-      await expect(oTema).toHaveCSS('--cor-primaria', '#1a5276');
+      await expect(oTema).toHaveCSS('--theme-action-primary', '#1a5276');
       await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-02', 2, 'cor-primaria-aplicada');
    });
 
