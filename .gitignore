@@ -38,3 +38,6 @@ evidencias-pr/*
 docs/tests/**
 !docs/tests/README.md
 # docs/bugs/** NÃO está ignorado — retrabalho versionado: docs/bugs/{parentKey}-{testeKey}.md
+
+# Estado da flag do Portal (restauracao) - modulo portal-link-409-ctoken
+.portal-state/

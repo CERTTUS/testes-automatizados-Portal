@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test:e2e": "playwright test --project=chromium",
+    "test:portal-link-409": "playwright test --project=portal-link-409",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
     "test:dev": "node scripts/run-test-dev.mjs",
@@ -21,6 +22,8 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.10.1",
+    "@types/pg": "^8.23.1",
+    "pg": "^8.23.1",
     "typescript": "^5.9.3"
   }
 }
