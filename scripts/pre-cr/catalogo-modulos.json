@@ -2,6 +2,6 @@
   "schema": "qa-pre-cr-catalogo",
   "versao": 1,
   "produto": "portal",
-  "playwrightProjects": ["chromium"],
+  "playwrightProjects": ["chromium", "portal-link-409"],
   "modulos": []
 }
