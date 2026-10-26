@@ -22,6 +22,25 @@
         "portal_cliente_config"
       ],
       "parentKey": "TALK-2866"
+    },
+    {
+      "slug": "modulo-talk-2866-bff-historico",
+      "label": "BFF Portal — histórico, dados do cliente e OS do histórico (TALK-2866)",
+      "docs": "docs/tests/TALK-2866/modulo-talk-2866-bff-historico",
+      "specs": [
+        "tests/api/modulo-talk-2866-bff-historico/CT-API-bff-historico.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2866-bff-historico",
+        "TALK-2880",
+        "TALK-2866",
+        "clienteController",
+        "ordemServicoAutorizacao",
+        "apiMicroservicosClient"
+      ],
+      "parentKey": "TALK-2866",
+      "devKey": "TALK-2880"
     }
   ]
 }
