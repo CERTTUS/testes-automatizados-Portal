@@ -6,6 +6,10 @@
   "type": "module",
   "scripts": {
     "test:e2e": "playwright test --project=chromium",
+    "test:modulo-talk-2669": "playwright test tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts tests/e2e/specs/modulo-talk-2669-shell-d4/shell-d4-portal.spec.ts --project=chromium",
+    "test:modulo-talk-2670": "playwright test tests/smoke/modulo-talk-2638/CT-SMK-05-d4-conteudo.spec.ts tests/e2e/specs/modulo-talk-2670-d4-conteudo/d4-conteudo-portal.spec.ts --project=chromium",
+    "test:modulo-talk-2671": "playwright test tests/smoke/modulo-talk-2638/CT-SMK-06-sem-timeline.spec.ts tests/e2e/specs/modulo-talk-2671-painel-detalhe/painel-detalhe-portal.spec.ts --project=chromium",
+    "test:modulo-talk-2668": "playwright test tests/api/modulo-talk-2638/CT-API-landing.spec.ts tests/smoke/modulo-talk-2638/CT-SMK-d1-login.spec.ts tests/e2e/specs/modulo-talk-2668-d1-testes --project=chromium",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
     "test:dev": "node scripts/run-test-dev.mjs",
@@ -19,9 +23,11 @@
     "pre-cr:renomear-runs": "node scripts/pre-cr/renomear-runs-legado.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.10.1",
     "@types/pg": "^8.11.10",
+    "axe-core": "^4.14.0",
     "pg": "^8.13.1",
     "typescript": "^5.9.3"
   }

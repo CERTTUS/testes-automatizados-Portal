@@ -73,7 +73,11 @@ export default defineConfig({
    projects: [
       {
          name: 'chromium',
-         testMatch: ['api/**/*.spec.ts', 'smoke/**/*.spec.ts', 'e2e/specs/**/*.spec.ts'],
+         testMatch: [
+            'api/**/*.spec.ts',
+            'smoke/**/*.spec.ts',
+            'e2e/specs/**/*.spec.ts',
+         ],
          use: useNavegadorE2e(),
       },
    ],

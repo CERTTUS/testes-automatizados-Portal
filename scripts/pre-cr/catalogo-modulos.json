@@ -62,6 +62,145 @@
         "portalcliente-web"
       ],
       "parentKey": "TALK-2866"
+    },
+    {
+      "slug": "modulo-talk-2638",
+      "label": "Landing portal — tema e contrato",
+      "docs": "docs/tests/modulo-talk-2638",
+      "specs": [
+        "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-05-d4-conteudo.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-06-sem-timeline.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2638",
+        "TALK-2638",
+        "TALK-2670",
+        "TALK-2640",
+        "BlocoSaudacaoOs",
+        "BlocoCondicoes",
+        "RodapeOficinaPortal",
+        "ConteudoDetalheOsAutenticado",
+        "PainelDetalheOs",
+        "RelatorioServico",
+        "autenticado-d4",
+        "TALK-2671"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2668-d1-testes",
+      "label": "Vitest/Playwright a11y + regressão D1 (TALK-2668)",
+      "docs": "docs/tests/TALK-2638/modulo-talk-2668-d1-testes",
+      "parentKey": "TALK-2638",
+      "devKey": "TALK-2668",
+      "testeKey": "TALK-2750",
+      "specs": [
+        "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-d1-login.spec.ts",
+        "tests/e2e/specs/modulo-talk-2668-d1-testes/a11y-portal.spec.ts",
+        "tests/e2e/specs/modulo-talk-2668-d1-testes/regressao-d1-login.spec.ts"
+      ],
+      "match": [
+        "modulo-talk-2668-d1-testes",
+        "TALK-2668",
+        "TALK-2750",
+        "a11y-portal",
+        "axeViolacoesFiltrar"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2667-login-d1",
+      "label": "UI login D1 — hero, marca, assinatura (TALK-2667)",
+      "docs": "docs/tests/TALK-2638/modulo-talk-2667-login-d1",
+      "parentKey": "TALK-2638",
+      "devKey": "TALK-2667",
+      "testeKey": "TALK-2747",
+      "specs": [
+        "tests/api/modulo-talk-2638/CT-API-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-landing.spec.ts",
+        "tests/smoke/modulo-talk-2638/CT-SMK-d1-login.spec.ts",
+        "tests/e2e/specs/modulo-talk-2667-login-d1/login-d1-portal.spec.ts"
+      ],
+      "match": [
+        "modulo-talk-2667-login-d1",
+        "TALK-2667",
+        "TALK-2747",
+        "LayoutAcesso",
+        "AssinaturaCerttus",
+        "CabecalhoMarcaAcesso",
+        "acesso-d1"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2640",
+      "label": "Gerado na Dev (modulo-talk-2640)",
+      "docs": "docs/tests/modulo-talk-2640",
+      "specs": [],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2640",
+        "TALK-2640"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2669-shell-d4",
+      "label": "Portal shell D4_v2 pós-login (TALK-2669)",
+      "docs": "docs/tests/TALK-2640/modulo-talk-2669-shell-d4",
+      "parentKey": "TALK-2640",
+      "devKey": "TALK-2669",
+      "testeKey": "TALK-2749",
+      "specs": [
+        "tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts",
+        "tests/e2e/specs/modulo-talk-2669-shell-d4/shell-d4-portal.spec.ts"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2670-d4-conteudo",
+      "label": "Portal saudação, condições e rodapé D4_v2 (TALK-2670)",
+      "docs": "docs/tests/TALK-2640/modulo-talk-2670-d4-conteudo",
+      "parentKey": "TALK-2640",
+      "devKey": "TALK-2670",
+      "testeKey": "TALK-2753",
+      "specs": [
+        "tests/smoke/modulo-talk-2638/CT-SMK-05-d4-conteudo.spec.ts",
+        "tests/e2e/specs/modulo-talk-2670-d4-conteudo/d4-conteudo-portal.spec.ts"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2770-ms-supabase-config",
+      "label": "MS Supabase portal_cliente_config enrich (TALK-2770)",
+      "docs": "docs/tests/TALK-2637/modulo-talk-2770-ms-supabase-config",
+      "parentKey": "TALK-2637",
+      "devKey": "TALK-2770",
+      "testeKey": "TALK-2793",
+      "specs": [
+        "tests/api/modulo-talk-2770/CT-API-supabase-config-enrich.spec.ts",
+        "tests/smoke/modulo-talk-2770/CT-SMK-tema-cache.spec.ts",
+        "tests/e2e/specs/modulo-talk-2770-ms-supabase-config/supabase-config-portal.spec.ts"
+      ],
+      "geradoNaDev": false,
+      "match": [
+        "modulo-talk-2770",
+        "TALK-2770",
+        "TALK-2793",
+        "portal_cliente_config",
+        "cTemaCacheChave",
+        "PortalClienteConfigRepositorio"
+      ]
+    },
+    {
+      "slug": "modulo-talk-2671-painel-detalhe",
+      "label": "Portal PainelDetalheOs + FR-011 (TALK-2671)",
+      "docs": "docs/tests/TALK-2640/modulo-talk-2671-painel-detalhe",
+      "parentKey": "TALK-2640",
+      "devKey": "TALK-2671",
+      "testeKey": "TALK-2754",
+      "specs": [
+        "tests/smoke/modulo-talk-2638/CT-SMK-06-sem-timeline.spec.ts"
+      ]
     }
   ]
 }
