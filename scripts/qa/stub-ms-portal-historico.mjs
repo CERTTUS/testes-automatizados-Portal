@@ -7,7 +7,11 @@ const C_TOKEN_ALVO_NEGADO = 'tokAlvoHist2880Negado';
 const C_TOKEN_ALVO_REVOGADO = 'tokAlvoHist2880Revogado';
 const C_TOKEN_LINK_FAVICON = 'tokLinkHist2880Favicon';
 const C_TOKEN_LINK_SEM_FAVICON = 'tokLinkHist2880SemFavicon';
+const C_TOKEN_LINK_LOGO = 'tokLinkHist2880LogoOnly';
+const C_TOKEN_LINK_REVOGADO = 'tokLinkHist2880Revogado';
+const C_TOKEN_LINK_SEM_CAMPO = 'tokLinkHist2880SemCampo';
 const C_FAVICON_URL = 'https://cdn.example.com/oficina/favicon.png';
+const C_LOGO_URL = 'https://cdn.example.com/oficina/logo.png';
 
 const N_PORTA = Number(process.env.QA_STUB_MS_PORTA ?? 18881);
 const C_HOST = '127.0.0.1';
@@ -149,6 +153,27 @@ const oServidor = http.createServer(async (oReq, oRes) => {
       }
       if (cToken === C_TOKEN_LINK_SEM_FAVICON) {
         responderSucesso(oRes, 'OK', oLinkDados(null));
+        return;
+      }
+      if (cToken === C_TOKEN_LINK_LOGO) {
+        responderSucesso(oRes, 'OK', {
+          cLogoUrl: C_LOGO_URL,
+          lTemLogo: true,
+          cNomeFantasia: 'Oficina Histórico',
+          cFaviconUrl: null,
+        });
+        return;
+      }
+      if (cToken === C_TOKEN_LINK_REVOGADO) {
+        responderErro(oRes, 410, 'Link revogado.');
+        return;
+      }
+      if (cToken === C_TOKEN_LINK_SEM_CAMPO) {
+        responderSucesso(oRes, 'OK', {
+          cLogoUrl: '',
+          lTemLogo: false,
+          cNomeFantasia: 'Oficina Histórico',
+        });
         return;
       }
       responderErro(oRes, 404, 'Link não encontrado.');

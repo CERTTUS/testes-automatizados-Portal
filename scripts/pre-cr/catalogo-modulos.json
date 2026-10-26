@@ -41,6 +41,27 @@
       ],
       "parentKey": "TALK-2866",
       "devKey": "TALK-2880"
+    },
+    {
+      "slug": "modulo-talk-2881-portal-favicon-historico-menu",
+      "label": "Portal web — favicon/Open Graph, Histórico e menu da conta (TALK-2881)",
+      "docs": "docs/tests/TALK-2866/modulo-talk-2881-portal-favicon-historico-menu",
+      "specs": [
+        "tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2881-portal-favicon-historico-menu",
+        "TALK-2881",
+        "metadataPortalMontar",
+        "MenuContaPortal",
+        "SecaoHistoricoOs",
+        "PainelMeusDados",
+        "LayoutPortalCliente",
+        "MenuTopoPortal",
+        "portalcliente-web"
+      ],
+      "parentKey": "TALK-2866"
     }
   ]
 }
