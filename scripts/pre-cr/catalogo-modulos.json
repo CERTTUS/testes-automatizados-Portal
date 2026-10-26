@@ -2,6 +2,26 @@
   "schema": "qa-pre-cr-catalogo",
   "versao": 1,
   "produto": "portal",
-  "playwrightProjects": ["chromium"],
-  "modulos": []
+  "playwrightProjects": [
+    "chromium"
+  ],
+  "modulos": [
+    {
+      "slug": "modulo-talk-2876-config-favicon-historico",
+      "label": "Supabase portal_cliente_config — favicon e histórico (TALK-2876)",
+      "docs": "docs/tests/TALK-2866/modulo-talk-2876-config-favicon-historico",
+      "specs": [
+        "tests/api/modulo-talk-2876-config-favicon-historico/CT-API-config-favicon-historico.spec.ts"
+      ],
+      "geradoNaDev": true,
+      "match": [
+        "modulo-talk-2876-config-favicon-historico",
+        "TALK-2876",
+        "TALK-2866",
+        "supabase_portal_cliente_config_favicon_historico",
+        "portal_cliente_config"
+      ],
+      "parentKey": "TALK-2866"
+    }
+  ]
 }
