@@ -3,6 +3,10 @@ import type {TestInfo} from '@playwright/test';
 import {evidenciarApiPreCr} from '../../e2e/helpers/pre-cr/evidenciarApiPreCr';
 import {E2E_API_BASE_URL, E2E_BASE_URL} from '../../e2e/helpers/env';
 import {lHomologPortal} from '../../e2e/helpers/portal/massaPortal2881';
+import {
+   massaLinksHomologPreparar,
+   type oMassaLinksHomolog,
+} from '../../e2e/helpers/portal/portalLinkHomolog';
 import {pularSeNaoAplicavel} from '../../e2e/helpers/pularSeNaoAplicavel';
 import {
    C_FASES_HISTORICO_TODAS,
@@ -115,6 +119,30 @@ async function comSessaoBff(
 
 test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
    test.describe.configure({mode: 'serial'});
+
+   /* Homolog: links da OS de teste (revogado → CT-API-08; ativo → histórico), criados sob demanda
+      e revogados no fim. Local: o stub de MS já traz essa massa. */
+   let oCtxLinks: APIRequestContext | undefined;
+   let pMassaLinks: Promise<oMassaLinksHomolog> | undefined;
+
+   function massaLinksObter(
+      playwrightRequest: typeof import('@playwright/test').request,
+   ): Promise<oMassaLinksHomolog> {
+      pMassaLinks ??= (async () => {
+         oCtxLinks = await playwrightRequest.newContext();
+         return massaLinksHomologPreparar(oCtxLinks);
+      })();
+      return pMassaLinks;
+   }
+
+   test.afterAll(async () => {
+      try {
+         const oMassa = await pMassaLinks?.catch(() => undefined);
+         await oMassa?.restaurar();
+      } finally {
+         await oCtxLinks?.dispose();
+      }
+   });
 
    test('CT-API-01 — Preview do link mostra nome, descrição e imagem da oficina', async ({
       request,
@@ -236,13 +264,12 @@ test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
    });
 
    test('CT-API-08 — Link revogado mostra «Link indisponível» sem nome de oficina', async ({
+      playwright,
       request,
    }, testInfo) => {
-      const cToken = tokenRevogadoPreview();
-      pularSeNaoAplicavel(
-         cToken !== '',
-         'Pré-condição de massa: falta um link revogado de homolog em PORTAL_TOKEN_REVOGADO_HOMOLOG (.env.local).',
-      );
+      const cToken = lHomologPortal()
+         ? tokenRevogadoPreview() || (await massaLinksObter(playwright.request)).cTokenRevogado
+         : tokenRevogadoPreview();
       const {cHtml} = await htmlTokenObter(request, cToken, testInfo, 'CT-API-08');
       expect(tituloHtml(cHtml)).toBe('Link indisponível | Portal do Cliente');
       expect(cHtml).not.toContain(C_NOME_OFICINA);
@@ -302,11 +329,13 @@ test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
       let oCtxMassa: APIRequestContext | undefined;
       let oMassaHistorico: oMassaHistoricoHomolog | undefined;
       let oAlvoCache: oItemHistorico | undefined;
+      let cTokenAlvoHomolog = '';
 
       test.beforeAll(async ({playwright}) => {
          if (!lHomologPortal()) {
             return;
          }
+         cTokenAlvoHomolog = (await massaLinksObter(playwright.request)).cTokenAlvo;
          oCtxMassa = await playwright.request.newContext();
          oMassaHistorico = await massaHistoricoHomologPreparar(oCtxMassa);
       });
@@ -319,7 +348,7 @@ test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
          }
       });
 
-      /** OS autorizada do histórico: stub fixo no local; homolog = 1ª outra OS do cliente. */
+      /** OS autorizada do histórico: stub fixo no local; homolog = a OS de teste com o link da massa. */
       async function alvoOkObter(oSessao: APIRequestContext): Promise<oItemHistorico> {
          if (!lHomologPortal()) {
             return {cOsPublicId: C_TOKEN_ALVO_OK, cStatus: 'P'};
@@ -331,10 +360,10 @@ test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
          expect(oRes.status(), 'histórico homolog (massa do alvo)').toBe(200);
          const mOrdens = ((await oRes.json()) as {oDados: {mOrdens: oItemHistorico[]}}).oDados
             .mOrdens;
-         oAlvoCache = mOrdens.find((oItem) => oItem.cOsPublicId !== tokenSessaoPortal());
+         oAlvoCache = mOrdens.find((oItem) => oItem.cOsPublicId === cTokenAlvoHomolog);
          expect(
             oAlvoCache,
-            'massa: o cliente do link precisa de outra OS com link ativo no histórico',
+            'massa: a OS de teste (PORTAL_OS_HISTORICO_HOMOLOG) precisa ser do mesmo cliente, da mesma empresa, não cancelada e recebida nos últimos 365 dias',
          ).toBeTruthy();
          return oAlvoCache as oItemHistorico;
       }
@@ -389,9 +418,9 @@ test.describe('API — Portal favicon, histórico e menu (TALK-2881)', () => {
             expect(Array.isArray(oDados.mFases)).toBe(true);
             if (lHomologPortal()) {
                expect(
-                  oDados.mOrdens.length,
-                  'massa: o cliente do link precisa de outra OS com link ativo',
-               ).toBeGreaterThan(0);
+                  oDados.mOrdens.map((oItem) => oItem.cOsPublicId),
+                  'a OS de teste com link ativo deve aparecer no histórico do cliente',
+               ).toContain(cTokenAlvoHomolog);
             } else {
                expect(oDados.mOrdens).toHaveLength(1);
                expect(oDados.mOrdens[0].cOsPublicId).toBe(C_TOKEN_ALVO_OK);
