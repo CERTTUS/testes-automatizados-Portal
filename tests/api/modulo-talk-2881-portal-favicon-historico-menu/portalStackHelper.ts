@@ -1,6 +1,15 @@
 import {expect, type APIRequestContext} from '@playwright/test';
-import {E2E_BASE_URL} from '../../e2e/helpers/env';
-import {C_TELEFONE} from '../modulo-talk-2866-bff-historico/historicoStub';
+import {cEnv, E2E_BASE_URL} from '../../e2e/helpers/env';
+import {
+   lHomologPortal,
+   telefonePortal2881,
+   tokenPortal2881,
+} from '../../e2e/helpers/portal/massaPortal2881';
+import {
+   C_TELEFONE,
+   C_TOKEN_LINK_FAVICON,
+   C_TOKEN_SESSAO,
+} from '../modulo-talk-2866-bff-historico/historicoStub';
 
 export {
    C_FAVICON_URL,
@@ -26,13 +35,50 @@ export const C_TOKEN_INEXISTENTE = 'tokLinkHist2880NaoExiste';
 export const C_UA_WHATSAPP = 'WhatsApp/2.23.20.0 A';
 export const C_NOME_OFICINA = 'Oficina Histórico';
 
+/** Preview GET /{token}: homolog usa o token real; local usa stub de MS. */
+export function tokenPreviewValido(): string {
+   if (!lHomologPortal()) {
+      return C_TOKEN_LINK_FAVICON;
+   }
+   const cToken = tokenPortal2881();
+   expect(cToken, 'PORTAL_TOKEN_HOMOLOG precisa estar no .env.local').not.toBe('');
+   return cToken;
+}
+
+/** CT-API-04: homolog reusa o token real após PATCH sem campo favicon; local usa stub. */
+export function tokenPreviewSemCampo(): string {
+   if (!lHomologPortal()) {
+      return C_TOKEN_LINK_SEM_CAMPO;
+   }
+   return tokenPreviewValido();
+}
+
+/** Sessão dos CTs de histórico/Meus dados: homolog usa o link real; local usa stub de MS. */
+export function tokenSessaoPortal(): string {
+   return lHomologPortal() ? tokenPreviewValido() : C_TOKEN_SESSAO;
+}
+
+/** CT-API-08: homolog precisa de um link revogado real (PORTAL_TOKEN_REVOGADO_HOMOLOG). */
+export function tokenRevogadoPreview(): string {
+   return lHomologPortal() ? cEnv('PORTAL_TOKEN_REVOGADO_HOMOLOG') : C_TOKEN_LINK_REVOGADO;
+}
+
+/** Celular do login: homolog usa o da OS real (com DDI 55); local usa o do stub. */
+function telefoneSessaoWeb(): string {
+   if (!lHomologPortal()) {
+      return C_TELEFONE;
+   }
+   const cDigitos = telefonePortal2881().replace(/\D/g, '');
+   return cDigitos.startsWith('55') ? cDigitos : `55${cDigitos}`;
+}
+
 export async function sessaoWebCriar(
    playwright: typeof import('@playwright/test').request,
    cToken: string,
 ): Promise<APIRequestContext> {
    const oCtx = await playwright.newContext({baseURL: E2E_BASE_URL});
    const oRes = await oCtx.post('/api/bff/acesso/telefone', {
-      data: {cToken, cTelefone: C_TELEFONE},
+      data: {cToken, cTelefone: telefoneSessaoWeb()},
    });
    expect(oRes.status()).toBe(200);
    return oCtx;

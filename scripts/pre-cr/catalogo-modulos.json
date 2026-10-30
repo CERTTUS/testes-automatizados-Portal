@@ -47,7 +47,9 @@
       "label": "Portal web — favicon/Open Graph, Histórico e menu da conta (TALK-2881)",
       "docs": "docs/tests/TALK-2866/modulo-talk-2881-portal-favicon-historico-menu",
       "specs": [
-        "tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts"
+        "tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts",
+        "tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu/CT-E2E-portal-favicon-historico-menu.spec.ts",
+        "tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu/CT-E2E-talk-aparencia-imagens.spec.ts"
       ],
       "geradoNaDev": true,
       "match": [
