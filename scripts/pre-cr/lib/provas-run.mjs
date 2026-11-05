@@ -45,7 +45,13 @@ export function listarProvasRun(runDir) {
   for (const sub of ['smoke', 'api', 'evidencias', 'jest']) {
     const base = path.join(runDir, sub)
     for (const arquivo of listarArquivosRecursivo(base)) {
-      if (sub === 'jest' || ehArquivoProvaCt(arquivo)) arquivos.push(arquivo)
+      if (sub === 'jest' || ehArquivoProvaCt(arquivo)) {
+        arquivos.push(arquivo)
+        continue
+      }
+      if (sub === 'smoke' && arquivo.toLowerCase().endsWith('.png')) {
+        arquivos.push(arquivo)
+      }
     }
   }
 
@@ -54,6 +60,12 @@ export function listarProvasRun(runDir) {
 
 export function encontrarProvaRun(runDir, ctId) {
   const prefixo = ctId.toUpperCase()
+
+  const smokeFinal = path.join(runDir, 'smoke', 'prints', prefixo, '99-tela-final.png')
+  if (fs.existsSync(smokeFinal)) {
+    return `smoke/prints/${prefixo}/99-tela-final.png`
+  }
+
   for (const arquivo of listarProvasRun(runDir)) {
     const base = path.basename(arquivo)
     if (!base.toUpperCase().includes(prefixo)) continue

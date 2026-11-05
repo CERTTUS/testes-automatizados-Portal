@@ -175,9 +175,18 @@ export function gerarLeiaMe(stagingDir) {
   }
 
   const apiDir = path.join(stagingDir, 'api')
+  const apiJsons = fs.existsSync(apiDir)
+    ? fs.readdirSync(apiDir).filter((f) => f.endsWith('-response.json')).sort()
+    : []
+  // Pacote só-API (sem smoke) também precisa de linha por CT na tabela (validador A5).
+  for (const nome of apiJsons) {
+    const ctId = nome.replace(/-response\.json$/i, '')
+    linhas.push(`| ${ctId} | \`api/\` | ${nome}, ${ctId}-resumo.md | resposta da API + resumo do CT |`)
+  }
+
   if (fs.existsSync(apiDir)) {
     linhas.push('', '## API', '')
-    for (const nome of fs.readdirSync(apiDir).filter((f) => f.endsWith('-response.json')).sort()) {
+    for (const nome of apiJsons) {
       const ctId = nome.replace(/-response\.json$/i, '')
       linhas.push(`- **${ctId}:** \`api/${nome}\` + \`api/${ctId}-resumo.md\``)
     }
