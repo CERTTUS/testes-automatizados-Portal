@@ -15,7 +15,7 @@ Análise da suíte na branch `develop` (integração de `historia/TALK-2468-port
 
 | Severidade | Problema | Evidência (arquivo:linha) | Impacto |
 |---|---|---|---|
-| Alta | Asserção contraditória sobre o menu Boleto: dois testes esperam **visível**, outro espera **0** | `tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts:66` (`nav-boleto` visível); `tests/e2e/specs/modulo-talk-2669-shell-d4/shell-d4-portal.spec.ts:26` (`irParaBoleto` clica no menu); `tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu/CT-E2E-portal-favicon-historico-menu.spec.ts:97` (`toHaveCount(0)`) | Pelo menos um falha sempre; a release nunca fica verde. Bug de produto ou teste desatualizado — decisão do time |
+| Alta | Asserção contraditória sobre o menu Boleto: dois testes esperam **visível**, outro espera **0** | `tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts:66` (`nav-boleto` visível); `tests/e2e/specs/modulo-talk-2669-shell-d4/shell-d4-portal.spec.ts:26` (`irParaBoleto` clica no menu); `tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu/CT-E2E-portal-favicon-historico-menu.spec.ts:97` (`toHaveCount(0)`) | Pelo menos um falhava sempre. **Resolvido:** decisão de produto = sem Boleto; testes ajustados no PR #7 (`test/portal-menu-sem-boleto`) |
 | Alta | `npm run test:e2e` roda tudo junto, inclusive o spec SQL (`DROP DATABASE`) e specs que exigem stub/homolog | `package.json` script `test:e2e` (`playwright test --project=chromium`); `CT-API-config-favicon-historico.spec.ts:11-12` (admin do Postgres e repo da API); `tests/api/modulo-talk-2866-bff-historico/historicoStub.ts:14` (stub 18881) | Falhas por ambiente, risco de rodar SQL destrutivo sem querer |
 | Alta | Mock-bff e portalcliente-api real usam a mesma porta (3333); lanes diferentes não convivem | `tests/e2e/helpers/env.ts:6` (`E2E_API_BASE_URL`); `CT-API-bff-historico.spec.ts` e `CT-API-portal-favicon-historico-menu.spec.ts` usam a API real + stub, os demais usam o mock | Troca manual de servidor entre fases; fácil errar |
 | Alta | Corrida em dados de homolog com `fullyParallel: true` | `playwright.config.ts:42` (`fullyParallel`); `tests/e2e/helpers/portal/talkPortalConfigApi.ts:83-95` (PATCH favicon/histórico na empresa 0001); `CT-E2E-talk-aparencia-imagens.spec.ts` (upload na mesma empresa) | Flake em homolog quando os dois rodam juntos |
@@ -41,7 +41,7 @@ Análise da suíte na branch `develop` (integração de `historia/TALK-2468-port
 
 | Item | O quê | Por quê | Risco | Esforço |
 |---|---|---|---|---|
-| P0-1 | **Decidir o Boleto** com o time de produto e ajustar o lado errado (teste ou produto) | Deixa a release verde de forma legítima | Baixo | P |
+| P0-1 | ~~Decidir o Boleto~~ — **feito**: o Portal não exibe Boleto; testes ajustados no PR #7 | Deixa a release verde de forma legítima | Baixo | P |
 | P0-2 | **Separar as lanes mock / homolog** em projetos Playwright (ou tags `@mock` / `@homolog` / `@stub` / `@sql`), cada uma com seu `testMatch` | Elimina a mistura de mundos; hoje a separação existe só no `release.config.mjs` | Baixo (aditivo) | M |
 | P0-3 | **Serializar o que altera homolog** (`test.describe.configure({mode: 'serial'})` já existe em parte; garantir `workers: 1` no projeto homolog) e deixar o Talk config por último | Remove a corrida descrita na seção 2 | Baixo | P |
 | P0-4 | **Tirar o SQL 2876 e o link-409 do `test:e2e`**; manter `test:e2e` = lane mock | Evita `DROP DATABASE` acidental e falhas por ambiente | Baixo | P |

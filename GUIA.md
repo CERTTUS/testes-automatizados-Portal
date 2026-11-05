@@ -256,7 +256,7 @@ Rode as lanes opt-in **depois** da lane mock, trocando o servidor da `3333` entr
 - [ ] portalcliente-web (`3000`) e mock-bff (`3333`) no ar — o pré-voo confere e reprova se estiverem fora.
 - [ ] Nenhum `.only` esquecido (o pré-voo também confere).
 - [ ] Para lanes opt-in: stack correta da `3333`, stub no ar, massa de homolog no `.env.local`, Postgres local.
-- [ ] **Decisão do Boleto resolvida** (veja seção 12) — enquanto não for, uma das fases `smoke` / `m4-ordem-servico` / `m6-menu-conta` reprova.
+- [ ] PR #7 (`test/portal-menu-sem-boleto`) já mesclado na develop — sem ele, `smoke` / `m4-ordem-servico` reprovam esperando um menu Boleto que não existe (veja seção 12).
 
 ## 9. Fluxo de branches e versões
 
@@ -347,9 +347,9 @@ Convenções de código do repo: indentação de 3 espaços, aspas simples, pref
 | Pré-voo: `.only esquecido` | `test.only` no código | Remover |
 | `--de=…` "fase desconhecida" | id errado | `npm run test:release:listar` |
 
-**Problemas conhecidos (decisão do time pendente)**
+**Problemas conhecidos**
 
-- **Boleto — asserção contraditória.** `tests/smoke/modulo-talk-2638/CT-SMK-autenticado.spec.ts:66` e o `irParaBoleto()` do `shell-d4-portal.spec.ts:26` esperam o menu Boleto **visível**; `CT-E2E-portal-favicon-historico-menu.spec.ts:97` espera **0** ocorrências. Não dá para os dois passarem. É bug do produto ou teste desatualizado? Decidir com o time antes de liberar.
+- **Menu Boleto — decidido: o Portal não exibe Boleto.** Havia testes contraditórios (`CT-SMK-01` e o `CT-E2E-01` do shell D4 esperavam o menu visível; o `CT-E2E-06` do 2881 espera 0). Os dois primeiros foram ajustados no PR #7 (`test/portal-menu-sem-boleto`): o POM agora tem `expectSemBoleto()`. Se aparecer o Boleto no portal, é bug do produto.
 - **Corrida em homolog.** O CT-API do 2881 (PATCH de favicon/histórico na empresa `0001`) e o `CT-E2E-talk-aparencia-imagens` (upload de favicon/logo na mesma empresa) mexem nos mesmos dados; por isso a lane homolog usa `--workers=1` e a aparência do Talk vai por último.
 - **Branches ainda fora da develop**: `test/IN-911-mascara-telefone` e `test/URG-10463-portal-link-409-ctoken` (veja `docs/melhorias-estrutura.md`).
 

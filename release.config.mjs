@@ -29,9 +29,9 @@
 // Fonte da lista: arquivos reais de tests/. O catálogo scripts/pre-cr/catalogo-modulos.json NÃO foi usado como
 // fonte porque lista specs repetidos entre módulos e está incompleto (serve ao pre-CR, não ao release).
 //
-// Conflito conhecido (decisão do time, os testes não foram alterados): o menu "Boleto" é esperado VISÍVEL em
-// CT-SMK-01 (smoke) e CT-E2E-01 do shell-d4, e AUSENTE (0) em CT-E2E-06 do 2881. Um dos dois falha em qualquer
-// ambiente até haver decisão — veja docs/melhorias-estrutura.md. Use --continuar para ver as demais fases.
+// Menu "Boleto": decisão de produto = o Portal NÃO exibe Boleto. Os testes que esperavam o menu visível
+// (CT-SMK-01 e CT-E2E-01 do shell-d4) foram ajustados no PR #7 (test/portal-menu-sem-boleto); até ele ser
+// mesclado na develop, as fases smoke / m4-ordem-servico podem reprovar por isso.
 
 const CHROMIUM = '--project=chromium';
 const SPEC_MENU_2881 =
