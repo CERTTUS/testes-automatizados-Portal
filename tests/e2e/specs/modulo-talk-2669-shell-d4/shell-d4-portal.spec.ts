@@ -23,8 +23,7 @@ test.describe('E2E — shell D4_v2 Portal (TALK-2669)', () => {
       await shell.expectShellVisivel();
       await expect(shell.navOrdemServico()).toHaveAttribute('aria-current', 'page');
 
-      await shell.irParaBoleto();
-      await shell.voltarOrdemServico();
+      await shell.expectSemBoleto();
       await expect(shell.layoutAutenticado()).toBeVisible();
 
       await shell.acionarSair();

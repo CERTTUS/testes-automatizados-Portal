@@ -37,7 +37,7 @@ const O_DETALHE_MINIMO = {
 };
 
 test.describe('Smoke — shell autenticado (TALK-2669)', () => {
-  test('CT-SMK-01 — Shell autenticado: topo, Boleto e Sair', async ({page, context}, testInfo) => {
+  test('CT-SMK-01 — Shell autenticado: topo, Ordem de Serviço e Sair (sem Boleto)', async ({page, context}, testInfo) => {
     await context.addCookies([
       {
         name: 'portal_sessao',
@@ -63,8 +63,9 @@ test.describe('Smoke — shell autenticado (TALK-2669)', () => {
     await expect(oMenu).toBeVisible();
     await expect(page.getByTestId('nav-topo-marca')).toContainText('Oficina E2E');
     await expect(page.getByTestId('nav-ordem-servico')).toBeVisible();
-    await expect(page.getByTestId('nav-boleto')).toBeVisible();
+    // O Portal não tem menu Boleto (decisão de produto)
+    await expect(page.getByTestId('nav-boleto')).toHaveCount(0);
     await expect(page.getByTestId('btn-sair-portal')).toBeVisible();
-    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-01', 2, 'menu-os-boleto-sair');
+    await evidenciarPassoSmokePreCr(page, testInfo, 'CT-SMK-01', 2, 'menu-os-sair-sem-boleto');
   });
 });

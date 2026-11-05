@@ -40,10 +40,10 @@ export class ShellD4PortalPage {
       await expect(this.menuTopo()).toBeVisible();
    }
 
-   async irParaBoleto(): Promise<void> {
-      await this.navBoleto().click();
-      await expect(this.secaoBoletoEmBreve()).toBeVisible();
-      await expect(this.secaoBoletoEmBreve()).toContainText('Em breve');
+   /** O Portal não tem menu Boleto (decisão de produto): nem o item no topo, nem a seção "Em breve". */
+   async expectSemBoleto(): Promise<void> {
+      await expect(this.navBoleto()).toHaveCount(0);
+      await expect(this.secaoBoletoEmBreve()).toHaveCount(0);
    }
 
    async voltarOrdemServico(): Promise<void> {
