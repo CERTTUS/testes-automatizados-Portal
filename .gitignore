@@ -38,3 +38,6 @@ evidencias-pr/*
 docs/tests/**
 !docs/tests/README.md
 # docs/bugs/** NÃO está ignorado — retrabalho versionado: docs/bugs/{parentKey}-{testeKey}.md
+
+# Relatórios da bateria de release
+release-report/

@@ -15,6 +15,8 @@
     "test:modulo-talk-2881:api": "playwright test tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts --project=chromium",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
+    "test:release": "node scripts/release/run-release.mjs",
+    "test:release:listar": "node scripts/release/run-release.mjs --listar",
     "test:dev": "node scripts/run-test-dev.mjs",
     "test:pre-cr": "node scripts/pre-cr/run-pre-cr.mjs",
     "pre-cr:empacotar": "node scripts/pre-cr/empacotar-evidencias.mjs",
