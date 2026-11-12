@@ -137,6 +137,65 @@
       ]
     },
     {
+      "slug": "modulo-in-946-login-telefone",
+      "label": "Login por telefone — fundo do campo e autofill (IN-946)",
+      "docs": "docs/tests/IN-946/modulo-in-946-login-telefone",
+      "parentKey": "IN-946",
+      "devKey": "IN-947",
+      "specs": [
+        "tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts"
+      ],
+      "match": [
+        "modulo-in-946-login-telefone",
+        "IN-946",
+        "IN-947",
+        "acesso-d1",
+        "acessoD1Autofill",
+        "CampoTelefone",
+        "FormularioAcessoTelefone"
+      ]
+    },
+    {
+      "slug": "modulo-in-948-cards-os",
+      "label": "Cards e abas da O.S. — altura padrão e fallbacks (IN-948)",
+      "docs": "docs/tests/IN-946/modulo-in-948-cards-os",
+      "parentKey": "IN-946",
+      "devKey": "IN-948",
+      "specs": [
+        "tests/api/modulo-in-948-cards-os/CT-API-cards-os.spec.ts"
+      ],
+      "match": [
+        "modulo-in-948-cards-os",
+        "IN-948",
+        "AbasDetalheOs",
+        "PainelFotosOs",
+        "EstadoPainelAba",
+        "cardsOsNormalizar",
+        "GaleriaFotoPreview",
+        "GaleriaFotosLightbox",
+        "abas-painel"
+      ]
+    },
+    {
+      "slug": "modulo-in-949-tema-rodape",
+      "label": "Logo da Certtus pela cor do fundo do rodapé e do login (IN-949)",
+      "docs": "docs/tests/IN-946/modulo-in-949-tema-rodape",
+      "parentKey": "IN-946",
+      "devKey": "IN-949",
+      "specs": [
+        "tests/api/modulo-in-949-tema-rodape/CT-API-tema-rodape.spec.ts"
+      ],
+      "match": [
+        "modulo-in-949-tema-rodape",
+        "IN-949",
+        "AssinaturaCerttus",
+        "RodapeOficinaPortal",
+        "marcaCerttusVariante",
+        "contrasteCor",
+        "certtus-logotipo-branco"
+      ]
+    },
+    {
       "slug": "modulo-talk-2640",
       "label": "Gerado na Dev (modulo-talk-2640)",
       "docs": "docs/tests/modulo-talk-2640",
