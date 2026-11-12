@@ -21,6 +21,9 @@ const C_TOKEN_TEMA_CUSTOM = "tokTemaCustomXXXXXXXX";
 const C_TOKEN_SEM_TOKENS_DERIVADOS = "tokSemTokensDerivadosXX";
 const C_TOKEN_TOKENS_INVALIDOS = "tokTokensInvalidosXXX";
 
+const C_TOKEN_TEMA_AVANCADO_IN949 = "tokTemaAvancadoIN949X";
+const C_TOKEN_TEMA_COR_INVALIDA_IN949 = "tokTemaCorInvalidaIN949";
+
 const C_TOKEN_OS_COM_ITENS = "tokOsComItensIN948XXX";
 const C_TOKEN_OS_SEM_ITENS = "tokOsSemItensIN948XXX";
 const C_TELEFONE_AUTORIZADO = (
@@ -71,6 +74,37 @@ function landingOk(oExtra) {
   };
 }
 
+// IN-949: tema (cores e avançado) que o detalhe da O.S. repassa por token.
+const M_TEMA_DETALHE_POR_TOKEN = new Map([
+  [
+    C_TOKEN_TEMA_AVANCADO_IN949,
+    {
+      cCorPrimaria: "#1a5276",
+      cCorSecundaria: "#2874a6",
+      cTemaModo: "claro",
+      oTemaAvancado: {
+        editor: "avancado",
+        authRodape: "#0F3D73",
+        loginFundo: "#0F3D73",
+      },
+      // O BFF deve descartar: o detalhe não repassa oTokensDerivados.
+      oTokensDerivados: { "--portal-os-footer-bg": "#ffffff" },
+    },
+  ],
+  [
+    C_TOKEN_TEMA_COR_INVALIDA_IN949,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oTemaAvancado: {
+        editor: "avancado",
+        authRodape: "azul",
+        loginFundo: "azul",
+      },
+    },
+  ],
+]);
+
 const M_POR_TOKEN = new Map([
   [
     C_TOKEN_OK,
@@ -87,6 +121,33 @@ const M_POR_TOKEN = new Map([
       cTemaModo: "escuro",
       cTemaCacheChave: "tenantteste:0001",
       oTemaSimples: { corPrimaria: "#6c3483", corSecundaria: "#884ea0" },
+    },
+  ],
+  [
+    C_TOKEN_TEMA_AVANCADO_IN949,
+    {
+      cNomeFantasia: "Oficina Tema Avançado",
+      cCorPrimaria: "#1a5276",
+      cCorSecundaria: "#2874a6",
+      cTemaModo: "claro",
+      oTemaAvancado: {
+        editor: "avancado",
+        authRodape: "#0F3D73",
+        loginFundo: "#0F3D73",
+      },
+    },
+  ],
+  [
+    C_TOKEN_TEMA_COR_INVALIDA_IN949,
+    {
+      cNomeFantasia: "Oficina Cor Inválida",
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oTemaAvancado: {
+        editor: "avancado",
+        authRodape: "azul",
+        loginFundo: "azul",
+      },
     },
   ],
   [
@@ -138,6 +199,8 @@ function oDetalheOs(cToken) {
     mAbasOrdem: ["checklist", "fotos", "servicos", "pecas"],
     oFlagsPainel: { evolucao: true, condicoes: true },
   };
+  const oTema = M_TEMA_DETALHE_POR_TOKEN.get(cToken);
+  if (oTema) return { ...oBase, ...oTema };
   if (cToken !== C_TOKEN_OS_COM_ITENS) return oBase;
   return {
     ...oBase,

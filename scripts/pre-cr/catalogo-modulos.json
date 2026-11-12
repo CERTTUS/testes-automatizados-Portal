@@ -177,6 +177,25 @@
       ]
     },
     {
+      "slug": "modulo-in-949-tema-rodape",
+      "label": "Logo da Certtus pela cor do fundo do rodapé e do login (IN-949)",
+      "docs": "docs/tests/IN-946/modulo-in-949-tema-rodape",
+      "parentKey": "IN-946",
+      "devKey": "IN-949",
+      "specs": [
+        "tests/api/modulo-in-949-tema-rodape/CT-API-tema-rodape.spec.ts"
+      ],
+      "match": [
+        "modulo-in-949-tema-rodape",
+        "IN-949",
+        "AssinaturaCerttus",
+        "RodapeOficinaPortal",
+        "marcaCerttusVariante",
+        "contrasteCor",
+        "certtus-logotipo-branco"
+      ]
+    },
+    {
       "slug": "modulo-talk-2640",
       "label": "Gerado na Dev (modulo-talk-2640)",
       "docs": "docs/tests/modulo-talk-2640",
