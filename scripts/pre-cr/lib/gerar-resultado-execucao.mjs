@@ -4,12 +4,28 @@ import { encontrarProvaRun } from './provas-run.mjs'
 
 function extrairIdsCenarios(cenariosMd) {
   const ids = new Set()
+  // CT definido em heading (`### CT-API-01 — …`) é a fonte; menções soltas no texto
+  // (nome de spec, `CT-SMK-*`, `CT-API-01..06`) não viram CT. Sem headings: varredura antiga.
+  const reHeading = /^###\s+((?:CT|CEN)-[A-Z0-9]+(?:-[A-Z0-9]+)*)\b/gim
+  let mHeading
+  while ((mHeading = reHeading.exec(cenariosMd)) !== null) {
+    ids.add(mHeading[1].toUpperCase())
+  }
+  if (ids.size > 0) return [...ids]
   const re = /\b((?:CT|CEN)-[A-Z0-9-]+)\b/gi
   let match
   while ((match = re.exec(cenariosMd)) !== null) {
     ids.add(match[1].toUpperCase())
   }
   return [...ids]
+}
+
+/** HARNESS_MULTI_DEV_PR: CT de irmã sem código sai como `pendente-irma:<KEY>` (não SEM_PROVA). */
+function pendenteIrmaDoCt(cenariosMd, ctId) {
+  const cEscapado = ctId.replace(/[-]/g, '\\-')
+  const oBloco = new RegExp(`^###\\s+${cEscapado}\\b[\\s\\S]*?(?=^###\\s|^##\\s|(?![\\s\\S]))`, 'mi').exec(cenariosMd)
+  const oMatch = oBloco && /Execu[çc][ãa]o:\*{0,2}\s*`?pendente-irma:([A-Z][A-Z0-9]*-\d+)/i.exec(oBloco[0])
+  return oMatch ? `pendente-irma:${oMatch[1].toUpperCase()}` : null
 }
 
 function titulosCenarios(cenariosMd) {
@@ -60,7 +76,10 @@ export function gerarResultadoExecucaoDev({
       continue
     }
     const prova = encontrarProvaRun(runDir, id)
-    const status = veredito === 'PASSOU' && prova ? 'PASSOU' : veredito === 'PASSOU' ? 'SEM_PROVA' : 'REPROVOU'
+    const irma = prova ? null : pendenteIrmaDoCt(cenariosMd, id)
+    const status = irma
+      ? irma
+      : veredito === 'PASSOU' && prova ? 'PASSOU' : veredito === 'PASSOU' ? 'SEM_PROVA' : 'REPROVOU'
     if (status === 'PASSOU') {
       porTipo[tipo] = (porTipo[tipo] ?? 0) + 1
     }
