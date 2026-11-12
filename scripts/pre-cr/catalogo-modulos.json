@@ -137,6 +137,25 @@
       ]
     },
     {
+      "slug": "modulo-in-946-login-telefone",
+      "label": "Login por telefone — fundo do campo e autofill (IN-946)",
+      "docs": "docs/tests/IN-946/modulo-in-946-login-telefone",
+      "parentKey": "IN-946",
+      "devKey": "IN-947",
+      "specs": [
+        "tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts"
+      ],
+      "match": [
+        "modulo-in-946-login-telefone",
+        "IN-946",
+        "IN-947",
+        "acesso-d1",
+        "acessoD1Autofill",
+        "CampoTelefone",
+        "FormularioAcessoTelefone"
+      ]
+    },
+    {
       "slug": "modulo-talk-2640",
       "label": "Gerado na Dev (modulo-talk-2640)",
       "docs": "docs/tests/modulo-talk-2640",
