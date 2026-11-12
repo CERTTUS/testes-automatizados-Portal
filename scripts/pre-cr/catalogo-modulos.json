@@ -156,6 +156,27 @@
       ]
     },
     {
+      "slug": "modulo-in-948-cards-os",
+      "label": "Cards e abas da O.S. — altura padrão e fallbacks (IN-948)",
+      "docs": "docs/tests/IN-946/modulo-in-948-cards-os",
+      "parentKey": "IN-946",
+      "devKey": "IN-948",
+      "specs": [
+        "tests/api/modulo-in-948-cards-os/CT-API-cards-os.spec.ts"
+      ],
+      "match": [
+        "modulo-in-948-cards-os",
+        "IN-948",
+        "AbasDetalheOs",
+        "PainelFotosOs",
+        "EstadoPainelAba",
+        "cardsOsNormalizar",
+        "GaleriaFotoPreview",
+        "GaleriaFotosLightbox",
+        "abas-painel"
+      ]
+    },
+    {
       "slug": "modulo-talk-2640",
       "label": "Gerado na Dev (modulo-talk-2640)",
       "docs": "docs/tests/modulo-talk-2640",
