@@ -284,6 +284,23 @@
       ],
       "parentKey": "TALK-3100",
       "devKey": "TALK-3103"
+    },
+    {
+      "slug": "modulo-talk-3105-logo-formato",
+      "label": "Logo da oficina em formato quadrado ou horizontal no portal (TALK-3105)",
+      "docs": "docs/tests/TALK-3100/modulo-talk-3105-logo-formato",
+      "specs": [
+        "tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts"
+      ],
+      "match": [
+        "modulo-talk-3105-logo-formato",
+        "TALK-3105",
+        "logoOficinaProporcaoCss",
+        "portal-nav-top__logo",
+        "portal-rodape-oficina__logo"
+      ],
+      "parentKey": "TALK-3100",
+      "devKey": "TALK-3105"
     }
   ]
 }

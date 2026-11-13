@@ -30,6 +30,11 @@ const C_TOKEN_TEXTO_LEGADO_T3103 = "tokTextoLegadoT3103";
 const C_TOKEN_TEXTO_INVALIDO_T3103 = "tokTextoInvalidoT3103";
 const C_TOKEN_CARDS_SEPARADOS_T3103 = "tokCardsSeparadosT3103";
 
+const C_TOKEN_LOGO_HORIZONTAL_T3105 = "tokLogoHorizontalT3105";
+const C_TOKEN_SEM_LOGO_T3105 = "tokSemLogoOficinaT3105";
+const C_LOGO_URL_HORIZONTAL_T3105 =
+  "https://cdn.sistema.certtus.com.br/tenantteste/0001/portal-cliente/logo-horizontal.png?v=20261112";
+
 const C_TOKEN_OS_COM_ITENS = "tokOsComItensIN948XXX";
 const C_TOKEN_OS_SEM_ITENS = "tokOsSemItensIN948XXX";
 const C_TELEFONE_AUTORIZADO = (
@@ -224,6 +229,26 @@ const M_TEMA_DETALHE_POR_TOKEN = new Map([
         : {}),
     },
   ]),
+  // TALK-3105: logo da oficina no detalhe (oBranding repassado pelo BFF).
+  [
+    C_TOKEN_LOGO_HORIZONTAL_T3105,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oBranding: {
+        cLogoUrl: C_LOGO_URL_HORIZONTAL_T3105,
+        cNomeFantasia: "Oficina Logo Horizontal",
+      },
+    },
+  ],
+  [
+    C_TOKEN_SEM_LOGO_T3105,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oBranding: { cLogoUrl: "", cNomeFantasia: "Oficina Sem Logo" },
+    },
+  ],
 ]);
 
 const M_POR_TOKEN = new Map([
@@ -280,6 +305,25 @@ const M_POR_TOKEN = new Map([
       oTemaAvancado: oTema,
     },
   ]),
+  // TALK-3105: landing com logo horizontal (sobrescreve O_BASE) e sem logo (herda O_BASE).
+  [
+    C_TOKEN_LOGO_HORIZONTAL_T3105,
+    {
+      cNomeFantasia: "Oficina Logo Horizontal",
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      lTemLogo: true,
+      cLogoUrl: C_LOGO_URL_HORIZONTAL_T3105,
+    },
+  ],
+  [
+    C_TOKEN_SEM_LOGO_T3105,
+    {
+      cNomeFantasia: "Oficina Sem Logo",
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+    },
+  ],
   [
     C_TOKEN_SEM_TOKENS_DERIVADOS,
     {
