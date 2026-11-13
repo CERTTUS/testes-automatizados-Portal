@@ -262,6 +262,45 @@
       "specs": [
         "tests/smoke/modulo-talk-2638/CT-SMK-06-sem-timeline.spec.ts"
       ]
+    },
+    {
+      "slug": "modulo-talk-3103-cor-texto-elementos",
+      "label": "Cor do texto de cada elemento do portal (TALK-3103)",
+      "docs": "docs/tests/TALK-3100/modulo-talk-3103-cor-texto-elementos",
+      "specs": [
+        "tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts"
+      ],
+      "match": [
+        "modulo-talk-3103-cor-texto-elementos",
+        "TALK-3103",
+        "temaTextoElemento",
+        "temaProducaoDerivar",
+        "authCardTexto",
+        "AbasDetalheOs",
+        "TimelineItem",
+        "Botao.tsx",
+        "autenticado-d4.css",
+        "acesso-d1.css"
+      ],
+      "parentKey": "TALK-3100",
+      "devKey": "TALK-3103"
+    },
+    {
+      "slug": "modulo-talk-3105-logo-formato",
+      "label": "Logo da oficina em formato quadrado ou horizontal no portal (TALK-3105)",
+      "docs": "docs/tests/TALK-3100/modulo-talk-3105-logo-formato",
+      "specs": [
+        "tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts"
+      ],
+      "match": [
+        "modulo-talk-3105-logo-formato",
+        "TALK-3105",
+        "logoOficinaProporcaoCss",
+        "portal-nav-top__logo",
+        "portal-rodape-oficina__logo"
+      ],
+      "parentKey": "TALK-3100",
+      "devKey": "TALK-3105"
     }
   ]
 }

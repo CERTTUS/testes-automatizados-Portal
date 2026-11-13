@@ -24,6 +24,17 @@ const C_TOKEN_TOKENS_INVALIDOS = "tokTokensInvalidosXXX";
 const C_TOKEN_TEMA_AVANCADO_IN949 = "tokTemaAvancadoIN949X";
 const C_TOKEN_TEMA_COR_INVALIDA_IN949 = "tokTemaCorInvalidaIN949";
 
+const C_TOKEN_TEXTO_PERSONALIZADO_T3103 = "tokTextoPersonalizadoT3103";
+const C_TOKEN_TEXTO_AUTOMATICO_T3103 = "tokTextoAutomaticoT3103";
+const C_TOKEN_TEXTO_LEGADO_T3103 = "tokTextoLegadoT3103";
+const C_TOKEN_TEXTO_INVALIDO_T3103 = "tokTextoInvalidoT3103";
+const C_TOKEN_CARDS_SEPARADOS_T3103 = "tokCardsSeparadosT3103";
+
+const C_TOKEN_LOGO_HORIZONTAL_T3105 = "tokLogoHorizontalT3105";
+const C_TOKEN_SEM_LOGO_T3105 = "tokSemLogoOficinaT3105";
+const C_LOGO_URL_HORIZONTAL_T3105 =
+  "https://cdn.sistema.certtus.com.br/tenantteste/0001/portal-cliente/logo-horizontal.png?v=20261112";
+
 const C_TOKEN_OS_COM_ITENS = "tokOsComItensIN948XXX";
 const C_TOKEN_OS_SEM_ITENS = "tokOsSemItensIN948XXX";
 const C_TELEFONE_AUTORIZADO = (
@@ -74,6 +85,104 @@ function landingOk(oExtra) {
   };
 }
 
+// TALK-3103: temas com cor de texto por elemento e fundo/texto próprio por card.
+const M_CHAVES_CARD_T3103 = [
+  "loginCampo",
+  "loginCampoTexto",
+  "authCardRelatorio",
+  "authCardRelatorioTexto",
+  "authCardEvolucao",
+  "authCardEvolucaoTexto",
+  "authCardAbas",
+  "authCardAbasTexto",
+  "authCardHistorico",
+  "authCardHistoricoTexto",
+  "authJanelaDados",
+  "authJanelaDadosTexto",
+];
+const O_TEMA_TEXTO_PERSONALIZADO_T3103 = {
+  editor: "avancado",
+  loginFundo: "#FFF7E6",
+  loginTexto: "#7A2E00",
+  loginBotao: "#7A2E00",
+  loginBotaoTexto: "#FFE8CC",
+  authCabecalho: "#0F3D73",
+  authCabecalhoTexto: "#FFD166",
+  authFundo: "#F4F4F4",
+  authFundoTexto: "#1B4332",
+  authCard: "#FFFFFF",
+  authCardTexto: "#5A189A",
+  authRodape: "#1B4332",
+  authRodapeTexto: "#D8F3DC",
+  acaoDestaque: "#C1121F",
+  acaoDestaqueTexto: "#FFF1F2",
+  loginCampo: "#FFF1C2",
+  loginCampoTexto: "#5C3B00",
+  authCardRelatorio: "#0F3D73",
+  authCardRelatorioTexto: "#FFFFFF",
+  authCardEvolucao: "#E8F5E9",
+  authCardEvolucaoTexto: "#1B4332",
+  authCardAbas: "#FDECEC",
+  authCardAbasTexto: "#7F1D1D",
+  authCardHistorico: "#EDE7F6",
+  authCardHistoricoTexto: "#4A148C",
+  authJanelaDados: "#263238",
+  authJanelaDadosTexto: "#ECEFF1",
+};
+const O_TEMA_TEXTO_AUTOMATICO_T3103 = {
+  editor: "avancado",
+  loginFundo: "#0F3D73",
+  loginTexto: "#171717",
+  authCabecalho: "#1C1C1C",
+  authFundo: "#262626",
+  authCard: "#0F3D73",
+  authRodape: "#1C1C1C",
+  loginBotaoTexto: null,
+  authCabecalhoTexto: null,
+  authFundoTexto: null,
+  authCardTexto: null,
+  authRodapeTexto: null,
+  acaoDestaqueTexto: null,
+  ...Object.fromEntries(M_CHAVES_CARD_T3103.map((cChave) => [cChave, null])),
+};
+const O_TEMA_TEXTO_LEGADO_T3103 = {
+  editor: "avancado",
+  loginTexto: "#E0E0E0",
+  loginFundo: "#171717",
+  authCabecalho: "#1C1C1C",
+  authFundo: "#262626",
+  authCard: "#FFFFFF",
+  authRodape: "#1C1C1C",
+};
+const O_TEMA_TEXTO_INVALIDO_T3103 = {
+  editor: "avancado",
+  authCard: "#FFFFFF",
+  authCardTexto: "roxo",
+  authRodapeTexto: "#12345",
+  acaoDestaqueTexto: "rgb(255, 0, 0)",
+};
+const O_TEMA_CARDS_SEPARADOS_T3103 = {
+  editor: "avancado",
+  authCard: "#FFFFFF",
+  loginCampo: "#FFF1C2",
+  loginCampoTexto: "#5C3B00",
+  authCardRelatorio: "#0F3D73",
+  authCardRelatorioTexto: "#FFFFFF",
+  authCardEvolucao: "#E8F5E9",
+  authCardEvolucaoTexto: "#1B4332",
+  authCardAbas: "#FDECEC",
+  authCardHistorico: "#EDE7F6",
+  authCardHistoricoTexto: "#4A148C",
+  authJanelaDados: "#263238",
+};
+const M_TEMAS_T3103 = [
+  [C_TOKEN_TEXTO_PERSONALIZADO_T3103, "Oficina Texto Personalizado", O_TEMA_TEXTO_PERSONALIZADO_T3103],
+  [C_TOKEN_TEXTO_AUTOMATICO_T3103, "Oficina Texto Automático", O_TEMA_TEXTO_AUTOMATICO_T3103],
+  [C_TOKEN_TEXTO_LEGADO_T3103, "Oficina Texto Legado", O_TEMA_TEXTO_LEGADO_T3103],
+  [C_TOKEN_TEXTO_INVALIDO_T3103, "Oficina Texto Inválido", O_TEMA_TEXTO_INVALIDO_T3103],
+  [C_TOKEN_CARDS_SEPARADOS_T3103, "Oficina Cards Separados", O_TEMA_CARDS_SEPARADOS_T3103],
+];
+
 // IN-949: tema (cores e avançado) que o detalhe da O.S. repassa por token.
 const M_TEMA_DETALHE_POR_TOKEN = new Map([
   [
@@ -101,6 +210,43 @@ const M_TEMA_DETALHE_POR_TOKEN = new Map([
         authRodape: "azul",
         loginFundo: "azul",
       },
+    },
+  ],
+  ...M_TEMAS_T3103.map(([cToken, , oTema]) => [
+    cToken,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oTemaAvancado: oTema,
+      // O BFF deve descartar: o detalhe não repassa oTokensDerivados.
+      ...(cToken === C_TOKEN_TEXTO_PERSONALIZADO_T3103
+        ? {
+            oTokensDerivados: {
+              "--portal-os-card-texto": "#000000",
+              "--text-primary": "#000000",
+            },
+          }
+        : {}),
+    },
+  ]),
+  // TALK-3105: logo da oficina no detalhe (oBranding repassado pelo BFF).
+  [
+    C_TOKEN_LOGO_HORIZONTAL_T3105,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oBranding: {
+        cLogoUrl: C_LOGO_URL_HORIZONTAL_T3105,
+        cNomeFantasia: "Oficina Logo Horizontal",
+      },
+    },
+  ],
+  [
+    C_TOKEN_SEM_LOGO_T3105,
+    {
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oBranding: { cLogoUrl: "", cNomeFantasia: "Oficina Sem Logo" },
     },
   ],
 ]);
@@ -148,6 +294,34 @@ const M_POR_TOKEN = new Map([
         authRodape: "azul",
         loginFundo: "azul",
       },
+    },
+  ],
+  ...M_TEMAS_T3103.map(([cToken, cNome, oTema]) => [
+    cToken,
+    {
+      cNomeFantasia: cNome,
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      oTemaAvancado: oTema,
+    },
+  ]),
+  // TALK-3105: landing com logo horizontal (sobrescreve O_BASE) e sem logo (herda O_BASE).
+  [
+    C_TOKEN_LOGO_HORIZONTAL_T3105,
+    {
+      cNomeFantasia: "Oficina Logo Horizontal",
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
+      lTemLogo: true,
+      cLogoUrl: C_LOGO_URL_HORIZONTAL_T3105,
+    },
+  ],
+  [
+    C_TOKEN_SEM_LOGO_T3105,
+    {
+      cNomeFantasia: "Oficina Sem Logo",
+      cCorPrimaria: "#1a5276",
+      cTemaModo: "claro",
     },
   ],
   [
