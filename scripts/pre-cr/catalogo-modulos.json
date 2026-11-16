@@ -164,7 +164,9 @@
       "parentKey": "IN-946",
       "devKey": "IN-948",
       "specs": [
-        "tests/api/modulo-in-948-cards-os/CT-API-cards-os.spec.ts"
+        "tests/api/modulo-in-948-cards-os/CT-API-cards-os.spec.ts",
+        "tests/smoke/modulo-in-948-cards-os/CT-SMK-cards-abas-vazio.spec.ts",
+        "tests/e2e/specs/modulo-in-948-cards-os/CT-E2E-cards-abas-altura.spec.ts"
       ],
       "match": [
         "modulo-in-948-cards-os",
@@ -185,7 +187,9 @@
       "parentKey": "IN-946",
       "devKey": "IN-949",
       "specs": [
-        "tests/api/modulo-in-949-tema-rodape/CT-API-tema-rodape.spec.ts"
+        "tests/api/modulo-in-949-tema-rodape/CT-API-tema-rodape.spec.ts",
+        "tests/smoke/modulo-in-949-tema-rodape/CT-SMK-tema-rodape-preview.spec.ts",
+        "tests/e2e/specs/modulo-in-949-tema-rodape/CT-E2E-tema-rodape.spec.ts"
       ],
       "match": [
         "modulo-in-949-tema-rodape",
