@@ -143,7 +143,9 @@
       "parentKey": "IN-946",
       "devKey": "IN-947",
       "specs": [
-        "tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts"
+        "tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts",
+        "tests/smoke/modulo-in-946-login-telefone/CT-SMK-login-campo-fundo.spec.ts",
+        "tests/e2e/specs/modulo-in-946-login-telefone/CT-E2E-login-campo-fundo.spec.ts"
       ],
       "match": [
         "modulo-in-946-login-telefone",

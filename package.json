@@ -13,6 +13,7 @@
     "test:modulo-talk-2881": "playwright test tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu --project=chromium",
     "test:modulo-talk-2881:e2e": "playwright test tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu --project=chromium",
     "test:modulo-talk-2881:api": "playwright test tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts --project=chromium",
+    "test:modulo-in-946-login-telefone": "playwright test tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts tests/smoke/modulo-in-946-login-telefone tests/e2e/specs/modulo-in-946-login-telefone --project=chromium",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
     "test:dev": "node scripts/run-test-dev.mjs",
