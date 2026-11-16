@@ -238,6 +238,8 @@ const M_TEMA_DETALHE_POR_TOKEN = new Map([
       oBranding: {
         cLogoUrl: C_LOGO_URL_HORIZONTAL_T3105,
         cNomeFantasia: "Oficina Logo Horizontal",
+        cNomeExibicaoPortal:
+          "Oficina Certtus Extrema Logo Horizontal Ltda Me",
       },
     },
   ],
@@ -310,6 +312,8 @@ const M_POR_TOKEN = new Map([
     C_TOKEN_LOGO_HORIZONTAL_T3105,
     {
       cNomeFantasia: "Oficina Logo Horizontal",
+      cNomeExibicaoPortal:
+        "Oficina Certtus Extrema Logo Horizontal Ltda Me",
       cCorPrimaria: "#1a5276",
       cTemaModo: "claro",
       lTemLogo: true,

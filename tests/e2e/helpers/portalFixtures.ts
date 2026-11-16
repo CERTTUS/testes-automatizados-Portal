@@ -36,6 +36,12 @@ export function tokenPortalOk(): string {
 }
 
 export function telefoneAutorizado(): string {
+  if (process.env.PORTAL_E2E_HOMOLOG === '1') {
+    const cHomolog = process.env.PORTAL_TELEFONE_HOMOLOG?.replace(/\D/g, '') ?? '';
+    if (cHomolog.length >= 10) {
+      return cHomolog.startsWith('55') ? cHomolog : `55${cHomolog}`;
+    }
+  }
   const cEnv = process.env.PORTAL_TELEFONE_AUTORIZADO?.trim();
   return cEnv && cEnv.length > 0 ? cEnv : "5511999999999";
 }

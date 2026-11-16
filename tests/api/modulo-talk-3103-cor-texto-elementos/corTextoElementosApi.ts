@@ -1,9 +1,36 @@
-// Massa do stub MS (scripts/qa/stub-ms-portal-landing.mjs) usada pelo módulo modulo-talk-3103-cor-texto-elementos.
-export const C_TOKEN_TEXTO_PERSONALIZADO = 'tokTextoPersonalizadoT3103';
-export const C_TOKEN_TEXTO_AUTOMATICO = 'tokTextoAutomaticoT3103';
-export const C_TOKEN_TEXTO_LEGADO = 'tokTextoLegadoT3103';
-export const C_TOKEN_TEXTO_INVALIDO = 'tokTextoInvalidoT3103';
-export const C_TOKEN_CARDS_SEPARADOS = 'tokCardsSeparadosT3103';
+// Stub: scripts/qa/stub-ms-portal-landing.mjs. Homolog (PORTAL_E2E_HOMOLOG=1): tokens reais via .env.local.
+import {cEnv} from '../../e2e/helpers/env';
+
+function tokenT3103(cChaveEnv: string, cPadraoStub: string): string {
+   if (cEnv('PORTAL_E2E_HOMOLOG') === '1') {
+      const cToken = cEnv(cChaveEnv);
+      if (cToken) {
+         return cToken;
+      }
+   }
+   return cPadraoStub;
+}
+
+export const C_TOKEN_TEXTO_PERSONALIZADO = tokenT3103(
+   'PORTAL_TOKEN_T3103_PERSONALIZADO',
+   'tokTextoPersonalizadoT3103',
+);
+export const C_TOKEN_TEXTO_AUTOMATICO = tokenT3103(
+   'PORTAL_TOKEN_T3103_AUTOMATICO',
+   'tokTextoAutomaticoT3103',
+);
+export const C_TOKEN_TEXTO_LEGADO = tokenT3103(
+   'PORTAL_TOKEN_T3103_LEGADO',
+   'tokTextoLegadoT3103',
+);
+export const C_TOKEN_TEXTO_INVALIDO = tokenT3103(
+   'PORTAL_TOKEN_T3103_INVALIDO',
+   'tokTextoInvalidoT3103',
+);
+export const C_TOKEN_CARDS_SEPARADOS = tokenT3103(
+   'PORTAL_TOKEN_T3103_CARDS_SEPARADOS',
+   'tokCardsSeparadosT3103',
+);
 
 export const M_CHAVES_TEXTO_ELEMENTO = [
    'loginBotaoTexto',

@@ -23,7 +23,15 @@
     "pre-cr:resolver": "node scripts/pre-cr/resolver-modulo.mjs --json",
     "pre-cr:bootstrap": "node scripts/pre-cr/bootstrap-modulo.mjs",
     "pre-cr:iniciar-rodada": "node scripts/pre-cr/iniciar-rodada.mjs",
-    "pre-cr:renomear-runs": "node scripts/pre-cr/renomear-runs-legado.mjs"
+    "pre-cr:renomear-runs": "node scripts/pre-cr/renomear-runs-legado.mjs",
+    "massa:portal-tokens": "node scripts/qa/gerar-tokens-portal-homolog.mjs",
+    "massa:t3103-tema": "node scripts/qa/massa-t3103-homolog-aplicar.mjs",
+    "test:modulo-talk-3103:api": "playwright test tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts --project=chromium",
+    "test:modulo-talk-3103:e2e": "playwright test tests/smoke/modulo-talk-3103-cor-texto-elementos/CT-SMK-01-cor-texto-landing.spec.ts tests/e2e/specs/modulo-talk-3103-cor-texto-elementos/cor-texto-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3103:test-server": "playwright test tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts tests/smoke/modulo-talk-3103-cor-texto-elementos/CT-SMK-01-cor-texto-landing.spec.ts tests/e2e/specs/modulo-talk-3103-cor-texto-elementos/cor-texto-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3105:api": "playwright test tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts --project=chromium",
+    "test:modulo-talk-3105:e2e": "playwright test tests/e2e/specs/modulo-talk-3105-logo-formato/logo-formato-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3105:test-server": "playwright test tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts tests/e2e/specs/modulo-talk-3105-logo-formato/logo-formato-portal.spec.ts --project=chromium"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

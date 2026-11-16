@@ -268,7 +268,9 @@
       "label": "Cor do texto de cada elemento do portal (TALK-3103)",
       "docs": "docs/tests/TALK-3100/modulo-talk-3103-cor-texto-elementos",
       "specs": [
-        "tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts"
+        "tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts",
+        "tests/smoke/modulo-talk-3103-cor-texto-elementos/CT-SMK-01-cor-texto-landing.spec.ts",
+        "tests/e2e/specs/modulo-talk-3103-cor-texto-elementos/cor-texto-portal.spec.ts"
       ],
       "match": [
         "modulo-talk-3103-cor-texto-elementos",
@@ -290,7 +292,8 @@
       "label": "Logo da oficina em formato quadrado ou horizontal no portal (TALK-3105)",
       "docs": "docs/tests/TALK-3100/modulo-talk-3105-logo-formato",
       "specs": [
-        "tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts"
+        "tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts",
+        "tests/e2e/specs/modulo-talk-3105-logo-formato/logo-formato-portal.spec.ts"
       ],
       "match": [
         "modulo-talk-3105-logo-formato",

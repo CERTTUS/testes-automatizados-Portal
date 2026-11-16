@@ -49,7 +49,8 @@ export default defineConfig({
       const n = Number(nBruto ?? '1');
       return Number.isFinite(n) && n > 0 ? n : 1;
    })(),
-   workers: process.env.CI || L_PRE_CR ? 1 : undefined,
+   workers:
+      process.env.CI || L_PRE_CR || process.env.PORTAL_E2E_HOMOLOG === '1' ? 1 : undefined,
    timeout: 45_000,
    reporter: process.env.E2E_REPORTER_LISTA === '1'
       ? [
