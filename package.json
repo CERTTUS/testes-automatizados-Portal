@@ -13,6 +13,9 @@
     "test:modulo-talk-2881": "playwright test tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu --project=chromium",
     "test:modulo-talk-2881:e2e": "playwright test tests/e2e/specs/modulo-talk-2881-portal-favicon-historico-menu --project=chromium",
     "test:modulo-talk-2881:api": "playwright test tests/api/modulo-talk-2881-portal-favicon-historico-menu/CT-API-portal-favicon-historico-menu.spec.ts --project=chromium",
+    "test:modulo-in-946-login-telefone": "playwright test tests/api/modulo-in-946-login-telefone/CT-API-login-telefone.spec.ts tests/smoke/modulo-in-946-login-telefone tests/e2e/specs/modulo-in-946-login-telefone --project=chromium",
+    "test:modulo-in-948-cards-os": "playwright test tests/api/modulo-in-948-cards-os/CT-API-cards-os.spec.ts tests/smoke/modulo-in-948-cards-os tests/e2e/specs/modulo-in-948-cards-os --project=chromium",
+    "test:modulo-in-949-tema-rodape": "playwright test tests/api/modulo-in-949-tema-rodape/CT-API-tema-rodape.spec.ts tests/smoke/modulo-in-949-tema-rodape tests/e2e/specs/modulo-in-949-tema-rodape --project=chromium",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
     "test:dev": "node scripts/run-test-dev.mjs",
@@ -23,7 +26,15 @@
     "pre-cr:resolver": "node scripts/pre-cr/resolver-modulo.mjs --json",
     "pre-cr:bootstrap": "node scripts/pre-cr/bootstrap-modulo.mjs",
     "pre-cr:iniciar-rodada": "node scripts/pre-cr/iniciar-rodada.mjs",
-    "pre-cr:renomear-runs": "node scripts/pre-cr/renomear-runs-legado.mjs"
+    "pre-cr:renomear-runs": "node scripts/pre-cr/renomear-runs-legado.mjs",
+    "massa:portal-tokens": "node scripts/qa/gerar-tokens-portal-homolog.mjs",
+    "massa:t3103-tema": "node scripts/qa/massa-t3103-homolog-aplicar.mjs",
+    "test:modulo-talk-3103:api": "playwright test tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts --project=chromium",
+    "test:modulo-talk-3103:e2e": "playwright test tests/smoke/modulo-talk-3103-cor-texto-elementos/CT-SMK-01-cor-texto-landing.spec.ts tests/e2e/specs/modulo-talk-3103-cor-texto-elementos/cor-texto-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3103:test-server": "playwright test tests/api/modulo-talk-3103-cor-texto-elementos/CT-API-cor-texto-elementos.spec.ts tests/smoke/modulo-talk-3103-cor-texto-elementos/CT-SMK-01-cor-texto-landing.spec.ts tests/e2e/specs/modulo-talk-3103-cor-texto-elementos/cor-texto-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3105:api": "playwright test tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts --project=chromium",
+    "test:modulo-talk-3105:e2e": "playwright test tests/e2e/specs/modulo-talk-3105-logo-formato/logo-formato-portal.spec.ts --project=chromium",
+    "test:modulo-talk-3105:test-server": "playwright test tests/api/modulo-talk-3105-logo-formato/CT-API-logo-formato.spec.ts tests/e2e/specs/modulo-talk-3105-logo-formato/logo-formato-portal.spec.ts --project=chromium"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
