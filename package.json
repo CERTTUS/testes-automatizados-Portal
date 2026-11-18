@@ -8,6 +8,8 @@
     "test:e2e": "playwright test --project=chromium",
     "test:e2e:headed": "playwright test --headed --project=chromium",
     "test:e2e:debug": "playwright test --debug",
+    "test:modulo-urg-11817": "playwright test tests/api/modulo-urg-11817-link-portal-backoffice/CT-API-contrato-backoffice.spec.ts tests/api/modulo-urg-11817-link-portal-backoffice/CT-API-efeito-portal.spec.ts tests/e2e/specs/modulo-urg-11817-link-portal-backoffice --project=chromium --workers=1",
+    "test:modulo-urg-11817:int": "playwright test tests/api/modulo-urg-11817-link-portal-backoffice/CT-INT-backoffice-portal.spec.ts --project=chromium --workers=1",
     "test:dev": "node scripts/run-test-dev.mjs",
     "test:pre-cr": "node scripts/pre-cr/run-pre-cr.mjs",
     "pre-cr:empacotar": "node scripts/pre-cr/empacotar-evidencias.mjs",
@@ -21,6 +23,8 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.10.1",
+    "@types/pg": "^8.11.10",
+    "pg": "^8.13.1",
     "typescript": "^5.9.3"
   }
 }

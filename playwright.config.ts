@@ -38,7 +38,7 @@ function useNavegadorE2e() {
 }
 
 export default defineConfig({
-   testDir: './tests/e2e',
+   testDir: './tests',
    fullyParallel: true,
    forbidOnly: !!process.env.CI,
    retries: process.env.CI ? 2 : 0,
@@ -73,7 +73,7 @@ export default defineConfig({
    projects: [
       {
          name: 'chromium',
-         testMatch: '**/specs/**/*.spec.ts',
+         testMatch: ['api/**/*.spec.ts', 'e2e/specs/**/*.spec.ts'],
          use: useNavegadorE2e(),
       },
    ],
